@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 const App = () => {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
@@ -37,7 +38,10 @@ const App = () => {
 
       // Step 2: Query SkyZoo for the join number
       const skyZooResponse = await axios.get(
-        `https://skyzoo.blue/stats/plc/${did}`
+        `/api/fetchJoinNumber`,
+        {
+          params: { did }, // Pass the DID as a query parameter
+        }
       );
 
       const { joinNumber } = skyZooResponse.data;
