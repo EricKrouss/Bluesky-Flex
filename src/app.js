@@ -26,7 +26,7 @@ const App = () => {
        {/* Social Icons Section */}
        <div className="social-icons">
         <a
-          href="https://bsky.app/profile/your-bluesky-handle" // Replace with your actual Bluesky profile URL
+          href="https://bsky.app/profile/krouss.net" // Replace with your actual Bluesky profile URL
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Bluesky Profile"
@@ -35,7 +35,7 @@ const App = () => {
           <BlueskyIcon className="icon" />
         </a>
         <a
-          href="https://github.com/your-github-username" // Replace with your actual GitHub profile URL
+          href="https://github.com/EricKrouss" // Replace with your actual GitHub profile URL
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub Profile"

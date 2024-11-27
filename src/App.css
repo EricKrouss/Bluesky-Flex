@@ -15,14 +15,14 @@ body {
 }
 
 h1 {
-    font-family: 'Roboto',;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     color: #ffffff;
     padding-bottom: 0px;
 }
 
 h4 {
-    font-family: 'Roboto',;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     color: #ffffff;
     margin-bottom: 25px;
