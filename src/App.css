@@ -1,0 +1,375 @@
+/* app.css */
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Roboto',;
+    text-align: center;
+    color: #ffffff;
+    padding-bottom: 0px;
+}
+
+h4 {
+    font-family: 'Roboto',;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    top: 10,
+
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+/* Tabs Styles */
+.tabs-container {
+    display: flex;
+    overflow-x: auto;
+    justify-self: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333333;
+    scrollbar-width: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-button {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #333333;
+}
+
+.tab-button.active {
+    background-color: #ff007a;
+    color: #ffffff;
+}
+
+/* Most Liked Posts Styles */
+.mlp-liked-posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns for desktop */
+    gap: 20px; /* Space between items */
+    padding: 10px;
+    justify-items: center; /* Centers grid items horizontally */
+}
+
+.mlp-liked-post-card {
+    background-color: #2a2a2a;
+    border: 1px solid #444444;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.mlp-liked-post-card:hover {
+    transform: translateY(-10px);
+}
+
+.mlp-liked-post-rank {
+    /* Ranking number (e.g., #1) */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff007a;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.mlp-bluesky-embed {
+    width: 100%;
+    margin-top: 15px;
+    display: block;
+}
+
+.mlp-bluesky-embed blockquote {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between icons */
+    padding-bottom: 20px;
+    padding-top: 0px; /* Spacing above and below */
+  }
+  
+  .social-icons .icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+    fill: #ffffff; /* Default icon color */
+    transition: transform 0.3s ease, fill 0.3s ease, filter 0.3s ease;
+  }
+  
+  .social-icons a:hover .icon {
+    transform: scale(1.2);
+    fill: #ff007a; /* Color change on hover */
+    filter: drop-shadow(0 0 5px rgba(255, 0, 122, 0.7));
+  }
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .social-icons .icon {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .social-icons .icon {
+      width: 30px;
+      height: 30px;
+    }
+  }  
+/* Responsive Design for Most Liked Posts */
+
+/* Tablet Devices (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .mlp-liked-posts-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly smaller columns */
+    }
+
+    .mlp-liked-post-rank {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+
+
+    .mlp-liked-post-rank {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+
+
+
+    .mlp-title{
+        margin: 20px,
+    }
+    .mlp-liked-posts-list {
+        display: list;
+        grid-template-columns: 1fr; /* Single column for vertical scrolling */
+        gap: 20px; /* Space between items */
+        padding: 0; /* Adjust padding for vertical layout */
+    }
+
+
+    .mlp-liked-posts-list::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+
+    .mlp-liked-post-card {
+     /* Prevent the cards from shrinking */
+        max-width: 100%; /* Adjust card width for better visibility */
+    }
+
+    .mlp-liked-post-rank {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+    .mlp-bluesky-embed blockquote{
+        height: auto;
+        overflow-x: hidden; /* Changed from auto to hidden */
+    }
+    .mlp-bluesky-embed iframe,
+    .mlp-bluesky-embed blockquote,
+    .mlp-bluesky-embed div {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word; /* Ensures long content wraps within the container */
+        word-wrap: break-word; /* For broader browser support */
+    }
+}
+
+/* Loading Card Styles */
+.loading-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.loading-card p {
+    font-size: 1.5em;
+    color: #e0e0e0;
+}
+
+/* Top Followers Styles */
+.tf-container {
+    /* Container for Top Followers */
+    padding: 20px;
+    width: 90%;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tf-title {
+    /* Title for Top Followers */
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.tf-error {
+    /* Error message styling */
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tf-user-list {
+    /* Container for user cards */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tf-user-card-link {
+    /* Link wrapping the user card */
+    text-decoration: none;
+    color: inherit;
+}
+
+.tf-user-card {
+    /* Individual user card styling */
+    background-color: #2a2a2a;
+    border: 1px solid #444444;
+    border-radius: 12px;
+    width: 250px;
+    height: 320px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tf-user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tf-user-rank {
+    /* Ranking number (e.g., #1) */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff007a;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.tf-user-avatar {
+    /* User avatar image */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid #ff007a;
+}
+
+.tf-user-name {
+    /* User's display name */
+    font-size: 1.2em;
+    color: #ffffff;
+    margin: 10px 0 5px 0;
+    text-align: center;
+    word-break: break-word;
+}
+
+.tf-user-handle {
+    /* User's handle (e.g., @username) */
+    color: #888888;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.tf-user-followers,
+.tf-user-posts {
+    /* Followers and Posts count */
+    margin: 5px 0;
+    color: #cccccc;
+    font-size: 0.9em;
+}
+
+/* Responsive Design for Top Followers */
+@media (max-width: 768px) {
+    .tf-user-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .tf-user-card {
+        width: 70vw;
+    }
+
+    .tf-user-rank {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+}

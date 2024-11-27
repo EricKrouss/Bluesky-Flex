@@ -1,112 +1,65 @@
 import React, { useState } from "react";
-import axios from "axios";
-
+import "./App.css";
+import TopFollowers from "./components/TopFollowers";
+import MostLikedPosts from "./components/MostLikedPosts";
+import { ReactComponent as BlueskyIcon } from "./assets/bluesky.svg";
+import { ReactComponent as GitHubIcon } from "./assets/github.svg";
 
 const App = () => {
-  const [username, setUsername] = useState("");
-  const [userData, setUserData] = useState(null);
-  const [error, setError] = useState("");
+  const [selectedTab, setSelectedTab] = useState("followers");
 
-  // Function to fetch user profile data
-  const fetchUserData = async () => {
-    setError(""); // Reset error message
-    setUserData(null); // Clear previous data
-
-    if (!username.trim()) {
-      setError("Please enter a username.");
-      return;
-    }
-
-    try {
-      // Step 1: Fetch user profile to get the DID
-      const profileResponse = await axios.get(
-        "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile",
-        {
-          params: { actor: username }, // Use the handle or DID
-        }
-      );
-
-      const {
-        displayName,
-        createdAt,
-        handle,
-        did,
-        followersCount,
-        followsCount,
-        postsCount,
-      } = profileResponse.data;
-
-      // Step 2: Query SkyZoo for the join number
-      const skyZooResponse = await axios.get(
-        `/api/fetchJoinNumber`,
-        {
-          params: { did }, // Pass the DID as a query parameter
-        }
-      );
-
-      const { joinNumber } = skyZooResponse.data;
-
-      // Update the user data state
-      setUserData({
-        displayName,
-        username: handle,
-        joinDate: new Date(createdAt).toLocaleDateString(),
-        joinNumber, // Fetched from SkyZoo
-        followers: followersCount,
-        following: followsCount,
-        posts: postsCount,
-      });
-    } catch (err) {
-      setError("Unable to fetch user details. Please check the username.");
-      console.error(err);
+  const renderContent = () => {
+    switch (selectedTab) {
+      case "followers":
+        return <TopFollowers />;
+      case "likedPosts":
+        return <MostLikedPosts />;
+      default:
+        return <TopFollowers />;
     }
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Bluesky User Info</h1>
-      <input
-        type="text"
-        placeholder="Enter username (e.g., john.bsky.social)"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        style={{
-          padding: "10px",
-          width: "300px",
-          marginBottom: "10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
-      />
-      <br />
-      <button
-        onClick={fetchUserData}
-        style={{
-          padding: "10px 20px",
-          borderRadius: "5px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
-        Fetch User Info
-      </button>
-
-      {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-
-      {userData && (
-        <div style={{ marginTop: "20px", textAlign: "left" }}>
-          <h2>User Details</h2>
-          <p><strong>Display Name:</strong> {userData.displayName}</p>
-          <p><strong>Username:</strong> {userData.username}</p>
-          <p><strong>Join Number:</strong> {userData.joinNumber}</p>
-          <p><strong>Join Date:</strong> {userData.joinDate}</p>
-          <p><strong>Followers:</strong> {userData.followers}</p>
-          <p><strong>Following:</strong> {userData.following}</p>
-          <p><strong>Posts:</strong> {userData.posts}</p>
-        </div>
-      )}
+    <div className="container">
+      <h1>Bluesky Flex</h1>
+      <h4>Made by Eric Krouss</h4>
+       {/* Social Icons Section */}
+       <div className="social-icons">
+        <a
+          href="https://bsky.app/profile/your-bluesky-handle" // Replace with your actual Bluesky profile URL
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Bluesky Profile"
+          title="Visit my Bluesky Profile"
+        >
+          <BlueskyIcon className="icon" />
+        </a>
+        <a
+          href="https://github.com/your-github-username" // Replace with your actual GitHub profile URL
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+          title="Visit my GitHub Profile"
+        >
+          <GitHubIcon className="icon" />
+        </a>
+      </div>
+      <div className="tabs-container">
+  <button
+    className={`tab-button ${selectedTab === 'followers' ? 'active' : ''}`}
+    onClick={() => setSelectedTab('followers')}
+  >
+    Most Followers
+  </button>
+  <button
+    className={`tab-button ${selectedTab === 'likedPosts' ? 'active' : ''}`}
+    onClick={() => setSelectedTab('likedPosts')}
+  >
+    Most Liked Posts
+  </button>
+  {/* Add more buttons here for future toggles */}
+</div>
+      {renderContent()}
     </div>
   );
 };

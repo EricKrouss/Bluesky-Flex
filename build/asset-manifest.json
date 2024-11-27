@@ -1,10 +1,15 @@
 {
   "files": {
-    "main.js": "/Bluesky-Flex/static/js/main.feb2180c.js",
+    "main.css": "/Bluesky-Flex/static/css/main.a9d83876.css",
+    "main.js": "/Bluesky-Flex/static/js/main.6127c7d0.js",
+    "static/media/bluesky.svg": "/Bluesky-Flex/static/media/bluesky.e96912832824d1ffa762117336459d9a.svg",
+    "static/media/github.svg": "/Bluesky-Flex/static/media/github.fc74c229efdb84ce69638d23d7cd9ca8.svg",
     "index.html": "/Bluesky-Flex/index.html",
-    "main.feb2180c.js.map": "/Bluesky-Flex/static/js/main.feb2180c.js.map"
+    "main.a9d83876.css.map": "/Bluesky-Flex/static/css/main.a9d83876.css.map",
+    "main.6127c7d0.js.map": "/Bluesky-Flex/static/js/main.6127c7d0.js.map"
   },
   "entrypoints": [
-    "static/js/main.feb2180c.js"
+    "static/css/main.a9d83876.css",
+    "static/js/main.6127c7d0.js"
   ]
 }
