@@ -35,7 +35,7 @@ const App = () => {
           <BlueskyIcon className="icon" />
         </a>
         <a
-          href="https://github.com/EricKrouss" // Replace with your actual GitHub profile URL
+          href="https://github.com/EricKrouss"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub Profile"
